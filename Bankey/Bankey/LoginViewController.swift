@@ -12,6 +12,12 @@ class LoginViewController: UIViewController {
     var loginView = LoginView()
     let loginButton = UIButton(type: .system)
     let errorLabel = UILabel()
+    var username : String? {
+        return loginView.usernameTextField.text
+    }
+    var password : String? {
+        return loginView.passwordTextField.text
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -36,6 +42,7 @@ extension LoginViewController {
         errorLabel.textColor = .systemRed
         errorLabel.isHidden = true
         loginButton.configuration = .filled()
+        loginButton.configuration?.imagePadding = 8
         loginButton.setTitle("Sign In", for: [])
         loginButton.addTarget(self, action: #selector(loginTapped), for: .primaryActionTriggered)
         
@@ -45,7 +52,7 @@ extension LoginViewController {
             loginView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             loginView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 1),
             view.trailingAnchor.constraint(equalToSystemSpacingAfter: loginView.trailingAnchor, multiplier: 1),
-            
+                
             loginButton.topAnchor.constraint(equalToSystemSpacingBelow: loginView.bottomAnchor, multiplier: 2),
             loginButton.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 1),
             view.trailingAnchor.constraint(equalToSystemSpacingAfter: loginButton.trailingAnchor, multiplier: 1),
@@ -57,7 +64,17 @@ extension LoginViewController {
     }
     
     @objc func loginTapped() {
-        errorLabel.isHidden = false
+        guard let username = username,let password = password else {
+            assertionFailure("Cannot be blank")
+            return
+        }
+
+        if username.isEmpty || password.isEmpty {
+            errorLabel.isHidden = false
+        } else {
+            loginButton.configuration?.showsActivityIndicator = true
+        }
     }
+    
 }
 
