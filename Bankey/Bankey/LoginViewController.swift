@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol LoginViewControllerProtocol : AnyObject {
+    func didLogin()
+}
+
 class LoginViewController: UIViewController {
 
     var loginView = LoginView()
@@ -14,6 +18,7 @@ class LoginViewController: UIViewController {
     let errorLabel = UILabel()
     let titleLabel = UILabel()
     let descriptionLabel = UILabel()
+    weak var delegate : LoginViewControllerProtocol?
     var username : String? {
         return loginView.usernameTextField.text
     }
@@ -35,7 +40,9 @@ class LoginViewController: UIViewController {
 
 }
 
-extension LoginViewController {
+extension LoginViewController  {
+    
+    
     private func style() {
         loginView.translatesAutoresizingMaskIntoConstraints = false
         loginButton.translatesAutoresizingMaskIntoConstraints = false
@@ -100,6 +107,7 @@ extension LoginViewController {
             errorLabel.isHidden = false
         } else {
             loginButton.configuration?.showsActivityIndicator = true
+            delegate?.didLogin()
         }
     }
     

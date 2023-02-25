@@ -6,9 +6,12 @@
 //
 
 import UIKit
+protocol OnboardingContainerViewControllerProtocol : AnyObject {
+    func didFinishOnboarding()
+}
 
 class OnboardingContainerViewController: UIViewController {
-
+    let closeButton = UIButton(type: .system)
     let pageViewController: UIPageViewController
     var pages = [UIViewController]()
     var currentVC: UIViewController {
@@ -35,7 +38,7 @@ class OnboardingContainerViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+    weak var delegate : OnboardingContainerViewControllerProtocol?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,6 +46,7 @@ class OnboardingContainerViewController: UIViewController {
         
         addChild(pageViewController)
         view.addSubview(pageViewController.view)
+        view.addSubview(closeButton)
         pageViewController.didMove(toParent: self)
         
         pageViewController.dataSource = self
@@ -57,6 +61,8 @@ class OnboardingContainerViewController: UIViewController {
         
         pageViewController.setViewControllers([pages.first!], direction: .forward, animated: false, completion: nil)
         currentVC = pages.first!
+        style()
+        layout()
     }
 }
 
@@ -89,6 +95,24 @@ extension OnboardingContainerViewController: UIPageViewControllerDataSource {
 
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
         return pages.firstIndex(of: self.currentVC) ?? 0
+    }
+    
+    private func style() {
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        closeButton.addTarget(self, action: #selector(closeTapped), for: .primaryActionTriggered)
+        closeButton.setTitle("Close", for: [])
+        
+    }
+    
+    private func layout() {
+        NSLayoutConstraint.activate([
+            closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: 20),
+            closeButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor,constant: 20)
+        ])
+    }
+    @objc func closeTapped(_ sender:UIButton) {
+        delegate?.didFinishOnboarding()
+        print("console.log")
     }
 }
 
