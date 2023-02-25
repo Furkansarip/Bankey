@@ -111,6 +111,7 @@ extension OnboardingContainerViewController: UIPageViewControllerDataSource {
         ])
     }
     @objc func closeTapped(_ sender:UIButton) {
+        LocalState.hasOnboarded = true
         delegate?.didFinishOnboarding()
         print("console.log")
     }
