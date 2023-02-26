@@ -10,7 +10,7 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    let appColor : UIColor = .systemTeal
     var window : UIWindow?
     let loginViewController = LoginViewController()
     let onboardingViewController = OnboardingContainerViewController()
