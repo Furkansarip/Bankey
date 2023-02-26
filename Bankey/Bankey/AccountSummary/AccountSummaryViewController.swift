@@ -8,48 +8,56 @@ import UIKit
 
 class AccountSummaryViewController: UIViewController {
     
-    let stackView = UIStackView()
-    let label = UILabel()
-   
+    let games = [
+        "Pacman",
+        "Space Invaders",
+        "Space Patrol",
+    ]
+    
+    var tableView = UITableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        style()
-        layout()
+        view.backgroundColor = .systemBackground
+        setup()
     }
 }
 
 extension AccountSummaryViewController {
-    func style() {
-        view.backgroundColor = .systemBackground // ! dont forget
-        
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.spacing = 20
-        
-        
-        // Label
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .center
-        label.font = UIFont.preferredFont(forTextStyle: .title3)
-        label.adjustsFontForContentSizeCategory = true
-        label.numberOfLines = 0
-        label.text = "Welcome"
-        
-        
+    private func setup() {
+        setupTableView()
     }
     
-    func layout() {
+    private func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
         
-        stackView.addArrangedSubview(label)
-        
-        view.addSubview(stackView)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(tableView)
         
         NSLayoutConstraint.activate([
-            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            stackView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 1),
-            view.trailingAnchor.constraint(equalToSystemSpacingAfter: stackView.trailingAnchor, multiplier: 1)
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
+    }
+}
+
+extension AccountSummaryViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        cell.textLabel?.text = games[indexPath.row]
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return games.count
+    }
+}
+
+extension AccountSummaryViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
     }
 }
