@@ -27,7 +27,7 @@ class LoginView : UIView {
     
 }
 
-extension LoginView {
+extension LoginView: UITextFieldDelegate {
     
     func style() {
         layer.cornerRadius = 10
@@ -36,16 +36,18 @@ extension LoginView {
         backgroundColor = .secondarySystemBackground
         stackView.translatesAutoresizingMaskIntoConstraints = false
         dividerView.translatesAutoresizingMaskIntoConstraints = false
-       
+        usernameTextField.placeholder = "Username"
+        passwordTextField.placeholder = "Password"
+        passwordTextField.isSecureTextEntry = true
+        passwordTextField.delegate = self
+        passwordTextField.enablePasswordToggle()
         stackView.addArrangedSubview(usernameTextField)
         stackView.addArrangedSubview(dividerView)
         stackView.addArrangedSubview(passwordTextField)
         dividerView.backgroundColor = .secondarySystemFill
         stackView.spacing = 8
         stackView.axis = .vertical
-        usernameTextField.placeholder = "Username"
-        passwordTextField.placeholder = "Password"
-        passwordTextField.isSecureTextEntry = true
+        
         
     }
     

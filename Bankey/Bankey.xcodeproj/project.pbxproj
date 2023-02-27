@@ -27,6 +27,8 @@
 		74AFCC3E29ACB6710019F4A3 /* CurrencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AFCC3D29ACB6710019F4A3 /* CurrencyFormatter.swift */; };
 		74AFCC4629ACE0100019F4A3 /* BankeyUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AFCC4529ACE0100019F4A3 /* BankeyUnitTests.swift */; };
 		74AFCC4D29ACE1490019F4A3 /* CurrencyFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AFCC4C29ACE1490019F4A3 /* CurrencyFormatterTests.swift */; };
+		74AFCC4F29ACEEFC0019F4A3 /* NotificationCenter+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AFCC4E29ACEEFC0019F4A3 /* NotificationCenter+Ext.swift */; };
+		74AFCC5129ACF1630019F4A3 /* UITextField+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74AFCC5029ACF1630019F4A3 /* UITextField+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 		74AFCC4329ACE0100019F4A3 /* BankeyUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BankeyUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		74AFCC4529ACE0100019F4A3 /* BankeyUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankeyUnitTests.swift; sourceTree = "<group>"; };
 		74AFCC4C29ACE1490019F4A3 /* CurrencyFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatterTests.swift; sourceTree = "<group>"; };
+		74AFCC4E29ACEEFC0019F4A3 /* NotificationCenter+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+Ext.swift"; sourceTree = "<group>"; };
+		74AFCC5029ACF1630019F4A3 /* UITextField+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +156,8 @@
 				74AFCC2B29AB59670019F4A3 /* UIViewController+Ext.swift */,
 				74AFCC3B29ACB61D0019F4A3 /* Decimal+Ext.swift */,
 				74AFCC3D29ACB6710019F4A3 /* CurrencyFormatter.swift */,
+				74AFCC4E29ACEEFC0019F4A3 /* NotificationCenter+Ext.swift */,
+				74AFCC5029ACF1630019F4A3 /* UITextField+Ext.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -312,7 +318,9 @@
 				74AFCC2029A9E9BA0019F4A3 /* LoginView.swift in Sources */,
 				74AFCC2329AA14D50019F4A3 /* OnboardingContainerViewController.swift in Sources */,
 				74AFCC0C29A9E0D60019F4A3 /* SceneDelegate.swift in Sources */,
+				74AFCC4F29ACEEFC0019F4A3 /* NotificationCenter+Ext.swift in Sources */,
 				74AFCC2A29AA4C6A0019F4A3 /* LocalState.swift in Sources */,
+				74AFCC5129ACF1630019F4A3 /* UITextField+Ext.swift in Sources */,
 				74AFCC3229AB60EE0019F4A3 /* AccountSummaryViewController.swift in Sources */,
 				74AFCC2C29AB59670019F4A3 /* UIViewController+Ext.swift in Sources */,
 				74AFCC2F29AB59920019F4A3 /* MainViewController.swift in Sources */,

@@ -27,22 +27,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         vc.setStatusBar()
         UINavigationBar.appearance().isTranslucent = false
         UINavigationBar.appearance().backgroundColor = .systemTeal
-        window?.rootViewController = loginViewController 
+        window?.rootViewController = loginViewController
+        registerForNotifications()
         return true
     }
 
 }
 
 extension AppDelegate : LoginViewControllerProtocol,OnboardingContainerViewControllerProtocol,DummyViewControllerProtocol {
-    func didLogOut() {
+    private func registerForNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(didLogOut), name: .logout, object: nil)
+    }
+    
+    @objc func didLogOut() {
         setRootViewController(loginViewController)
     }
     
-    func didFinishOnboarding() {
+     func didFinishOnboarding() {
        setRootViewController(loginViewController)
     }
     
-    func didLogin() {
+     func didLogin() {
         if LocalState.hasOnboarded {
             setRootViewController(mainViewController)
         } else {
