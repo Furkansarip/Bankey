@@ -28,6 +28,7 @@ extension AccountSummaryViewController {
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.backgroundColor = .systemTeal
         tableView.register(AccountSummaryCell.self, forCellReuseIdentifier: AccountSummaryCell.reuseID)
         tableView.rowHeight = AccountSummaryCell.rowHeight
         tableView.tableFooterView = UIView()
@@ -88,6 +89,12 @@ extension AccountSummaryViewController: UITableViewDelegate {
         let investment2 = AccountSummaryCell.ViewModel(accountType: .Investment,
                                                        accountName: "Growth Fund",
                                                        balance: 15000.00)
+        let investment3 = AccountSummaryCell.ViewModel(accountType: .Investment,
+                                                       accountName: "Growth Fund",
+                                                       balance: 15000.00)
+        let investment4 = AccountSummaryCell.ViewModel(accountType: .Investment,
+                                                       accountName: "Growth Fund",
+                                                       balance: 15000.00)
 
         accounts.append(savings)
         accounts.append(chequing)
@@ -95,5 +102,7 @@ extension AccountSummaryViewController: UITableViewDelegate {
         accounts.append(masterCard)
         accounts.append(investment1)
         accounts.append(investment2)
+        accounts.append(investment3)
+        accounts.append(investment4)
         }
 }
