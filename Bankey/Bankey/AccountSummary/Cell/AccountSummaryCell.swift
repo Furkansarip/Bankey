@@ -18,6 +18,11 @@ class AccountSummaryCell : UITableViewCell {
     struct ViewModel {
         let accountType: AccountType
         let accountName: String
+        let balance : Decimal
+        
+        var balanceAsAttributedString: NSAttributedString {
+            return CurrencyFormatter().makeAttributedCurrency(balance)
+        }
     }
 
     let viewModel: ViewModel? = nil
@@ -30,6 +35,7 @@ class AccountSummaryCell : UITableViewCell {
     let balanceLabel = UILabel()
     let balanceAmountLabel = UILabel()
     let chevronImage = UIImageView()
+    
     
     static let rowHeight : CGFloat = 112
     static let reuseID = "AccountSummaryCell"
@@ -120,6 +126,7 @@ extension AccountSummaryCell {
         
         typeLabel.text = vm.accountType.rawValue
         accountName.text = vm.accountName
+        balanceAmountLabel.attributedText = vm.balanceAsAttributedString
         switch vm.accountType {
         case .Banking:
             balanceLabel.text = "Current balance"
