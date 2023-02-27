@@ -8,6 +8,21 @@
 import UIKit
 
 class AccountSummaryCell : UITableViewCell {
+    
+    enum AccountType: String {
+        case Banking
+        case CreditCard
+        case Investment
+    }
+    
+    struct ViewModel {
+        let accountType: AccountType
+        let accountName: String
+    }
+
+    let viewModel: ViewModel? = nil
+    
+    
     let typeLabel = UILabel()
     let dividerView = UIView()
     let stackView = UIStackView()
@@ -100,5 +115,24 @@ extension AccountSummaryCell {
         
         return rootString
     }
+    
+    func configure(with vm: ViewModel) {
+        
+        typeLabel.text = vm.accountType.rawValue
+        accountName.text = vm.accountName
+        switch vm.accountType {
+        case .Banking:
+            balanceLabel.text = "Current balance"
+            dividerView.backgroundColor = .systemTeal
+        case .CreditCard:
+            balanceLabel.text = "Current balance"
+            dividerView.backgroundColor = .systemOrange
+        case .Investment:
+            balanceLabel.text = "Value"
+            dividerView.backgroundColor = .systemPurple
+        }
+    }
+    
+    
 }
 
